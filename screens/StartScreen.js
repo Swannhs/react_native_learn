@@ -6,11 +6,19 @@ import TextInputCustom from "../components/TextInputCustom";
 
 const StartScreen = props => {
     const [value, setValue] = useState();
+    const [confirm, setConfirm] = useState(false);
 
     const inputHandler = input => {
         setValue(input.replace(/[^0-9]/g, ''))
     }
 
+    const onButtonClicked = props =>{
+        if (props.title === 'reset'){
+            setValue('')
+        }else {
+            console.log('Confirm')
+        }
+    }
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
@@ -30,8 +38,8 @@ const StartScreen = props => {
                     />
 
                     <View style={styles.buttonContainer}>
-                        <ButtonCustom title='reset'/>
-                        <ButtonCustom title='confirm'/>
+                        <ButtonCustom title='reset' onButtonClicked={(props) => onButtonClicked(props)}/>
+                        <ButtonCustom title='confirm' onButtonClicked={(props) => onButtonClicked(props)}/>
                     </View>
 
                 </Card>
