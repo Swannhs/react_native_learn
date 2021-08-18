@@ -1,25 +1,27 @@
-import React from 'react';
-import {View, StyleSheet, Text} from "react-native";
+import React, {useState} from 'react';
+import {View, StyleSheet, Text, TouchableWithoutFeedback, Keyboard} from "react-native";
 import Card from "../components/Card";
 import ButtonCustom from "../components/ButtonCustom";
 import TextInputCustom from "../components/TextInputCustom";
 
 const StartScreen = props => {
     return (
-        <View style={styles.screen}>
-            <Text style={styles.title}>Start New Game</Text>
-            <Card style={styles.inputContainer}>
-                <Text>Enter a number</Text>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.screen}>
+                <Text style={styles.title}>Start New Game</Text>
+                <Card style={styles.inputContainer}>
+                    <Text>Enter a number</Text>
 
-                <TextInputCustom style={styles.input}/>
+                    <TextInputCustom/>
 
-                <View style={styles.buttonContainer}>
-                    <ButtonCustom title='reset'/>
-                    <ButtonCustom title='confirm'/>
-                </View>
+                    <View style={styles.buttonContainer}>
+                        <ButtonCustom title='reset'/>
+                        <ButtonCustom title='confirm'/>
+                    </View>
 
-            </Card>
-        </View>
+                </Card>
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
