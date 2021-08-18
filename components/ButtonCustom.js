@@ -2,10 +2,13 @@ import React from 'react';
 import {Button, View, StyleSheet} from "react-native";
 
 const ButtonCustom = props => {
+    const onButtonPress = props => {
+        props.onButtonClicked(props);
+    }
     return (
         <View style={styles.buttonContainer}>
             <Button title={props.title} onPress={() => {
-                console.log(`${props.title} is clicked`)
+                onButtonPress(props);
             }}/>
         </View>
     );
