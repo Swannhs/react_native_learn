@@ -5,6 +5,12 @@ import ButtonCustom from "../components/ButtonCustom";
 import TextInputCustom from "../components/TextInputCustom";
 
 const StartScreen = props => {
+    const [value, setValue] = useState();
+
+    const inputHandler = input => {
+        setValue(input.replace(/[^0-9]/g, ''))
+    }
+
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
@@ -12,7 +18,16 @@ const StartScreen = props => {
                 <Card style={styles.inputContainer}>
                     <Text>Enter a number</Text>
 
-                    <TextInputCustom/>
+                    <TextInputCustom
+                        style={styles.input}
+                        blurOnSubmit={true}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType='numeric'
+                        maxLength={2}
+                        onChangeText={inputHandler}
+                        value={value}
+                    />
 
                     <View style={styles.buttonContainer}>
                         <ButtonCustom title='reset'/>
